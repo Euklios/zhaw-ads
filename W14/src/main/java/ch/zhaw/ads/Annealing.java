@@ -12,8 +12,8 @@ import java.awt.*;
 public class Annealing {
     private static final double ACCEPTCOUNT = 1000;
     private int count;
-    private double coolingRate;
-    private double normFactor;
+    private final double coolingRate;
+    private final double normFactor;
 
     // public readonly (for unittests)
     public AnnealingState state;
@@ -35,12 +35,12 @@ public class Annealing {
 
     private String getInfoBlock() {
         String info = "";
-        info += "Count:" + Integer.toString(count) + "\n";
-        info += "Cost:" + Double.toString((int) (state.getCost() * 100) / 100.0) + "\n";
-        info += "Temp:" + Double.toString((int) (temperature * 1000) / 1000.0) + "\n";
+        info += "Count:" + count + "\n";
+        info += "Cost:" + (int) (state.getCost() * 100) / 100.0 + "\n";
+        info += "Temp:" + (int) (temperature * 1000) / 1000.0 + "\n";
         info += "Boltz:" + acceptBoltzCount + "\n";
         info += "Accept:" + acceptCount + "\n";
-        info += accept() ? "ACCEPT" : "" + "\n";
+        info += accept() ? "ACCEPT" : "\n";
         return info;
     }
 

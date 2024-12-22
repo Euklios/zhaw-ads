@@ -1,7 +1,7 @@
 package ch.zhaw.ads;
 
 public interface Collectable {
-    public void setMark(boolean b);
-    public boolean isMarked();
-    public void finalize();
+    void setMark(boolean b);
+    boolean isMarked();
+    void finalize();
 }

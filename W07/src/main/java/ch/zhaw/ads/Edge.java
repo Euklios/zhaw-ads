@@ -5,13 +5,6 @@ public class Edge<N>
     protected N dest;  // Zielknoten der Kante
     protected double weight;  // Kantengewicht
 
-    public Edge() {}
-
-    public Edge(N dest, double weight) {
-        this.dest = dest;
-        this.weight = weight;
-    }
-
     public void setDest(N node) {this.dest = node;}
     public N getDest() {return dest;}
 

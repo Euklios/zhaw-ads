@@ -27,6 +27,7 @@ public class AnnealingServer implements CommandExecutor {
         }
         int steps = Integer.parseInt(args[1]);
         for (int i = 0; i < steps; i++) {
+            assert annealing != null;
             annealing.step();
         }
         String mode = "TEXT";
@@ -36,6 +37,7 @@ public class AnnealingServer implements CommandExecutor {
             annealing.draw(g);
             return g.getTrace();
         } else {
+            assert annealing != null;
             return state+" "+annealing.getInfo()+"\n";
         }
     }

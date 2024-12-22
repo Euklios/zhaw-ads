@@ -10,12 +10,6 @@ public class SortServer implements CommandExecutor {
     private final int DATARANGE = 10000000;
     public int dataElems; // number of data
 
-    public void swap(int[] a, int i, int j) {
-        int h = a[i];
-        a[i] = a[j];
-        a[j] = h;
-    }
-
     public void bubbleSort(int[] a) {
         int length = a.length;
         for (int b = 1; b < length; b++) {
@@ -111,15 +105,22 @@ public class SortServer implements CommandExecutor {
     public double measureTime(Supplier<int[]> generator, Consumer<int[]> sorter) throws Exception {
         double elapsed = 0;
 
+        int[] a = generator.get();
+        int[] b = new int[dataElems];
+
         long end, start = System.currentTimeMillis();
         int count = 0;
         do {
+            System.arraycopy(a, 0, b, 0, a.length);
+            sorter.accept(b);
             count++;
             end = System.currentTimeMillis();
+
         } while (end - start < 1000);
         System.out.println("time="+(double)(end-start)/count);
 
-        // if (!isSorted(b)) throw new Exception ("ERROR not sorted");
+        if (!isSorted(b)) throw new Exception ("ERROR not sorted");
+
         return elapsed;
     }
 
@@ -135,17 +136,17 @@ public class SortServer implements CommandExecutor {
         generator.put("ASC", this::ascendingData);
         generator.put("DESC", this::descendingData);
 
-        String args[] = arg.toUpperCase().split("\\s+");
+        String[] args = arg.toUpperCase().split("\\s+");
         dataElems = Integer.parseInt(args[2]);
         try {
             double time = measureTime(generator.get(args[1]), sorter.get(args[0]));
-            return arg + " "+Double.toString(time)+" ms\n";
+            return arg + " " + time + " ms\n";
         } catch (Exception ex){
             return arg + " "+ ex.getMessage()+"\n";
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SortServer sorter = new SortServer();
         String sort;
         sort = "BUBBLE RANDOM 10000"; System.out.print(sorter.execute(sort));

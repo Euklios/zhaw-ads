@@ -2,7 +2,7 @@ package ch.zhaw.ads;
 
 public class KgvServer implements CommandExecutor {
     @Override
-    public String execute(String command) throws Exception {
+    public String execute(String command) {
         String[] numbers = command.split("[ ,]+");
         int a = Integer.parseInt(numbers[0]);
         int b = Integer.parseInt(numbers[1]);

@@ -25,7 +25,7 @@ public class CObject implements Collectable {
 
     /* finalize object */
     public void finalize() {
-        Storage.log.append("finalize " + this.toString() + "\n");
+        Storage.log.append("finalize ").append(this).append("\n");
     }
 }
 

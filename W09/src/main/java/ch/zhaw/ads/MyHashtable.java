@@ -7,6 +7,7 @@ import java.util.Set;
 public class MyHashtable<K,V> implements Map<K,V> {
     private static final double LOAD_FACTOR = 0.8;
 
+    @SuppressWarnings("unchecked")
     private final K DELETED = (K) new Object();
 
     private int threshold;
@@ -27,7 +28,9 @@ public class MyHashtable<K,V> implements Map<K,V> {
         K[] oldKeys = this.keys;
         V[] oldValues = this.values;
 
+        //noinspection unchecked
         this.keys = (K[]) new Object[newSize];
+        //noinspection unchecked
         this.values = (V[]) new Object[newSize];
 
 
@@ -41,7 +44,9 @@ public class MyHashtable<K,V> implements Map<K,V> {
     }
 
     public MyHashtable(int size) {
+        //noinspection unchecked
         this.keys = (K[]) new Object[size];
+        //noinspection unchecked
         this.values = (V[]) new Object[size];
         this.threshold = (int) (size * LOAD_FACTOR);
     }
@@ -132,8 +137,8 @@ public class MyHashtable<K,V> implements Map<K,V> {
     //  Returns the number of key-value mappings in this map. 
     public int size() {
         int size = 0;
-        for (int i = 0; i < keys.length; i++) {
-            if (keys[i] != null && keys[i] != DELETED) {
+        for (K key : keys) {
+            if (key != null && key != DELETED) {
                 size++;
             }
         }
@@ -143,8 +148,8 @@ public class MyHashtable<K,V> implements Map<K,V> {
 
     private int sizeWithDeleted() {
         int size = 0;
-        for (int i = 0; i < keys.length; i++) {
-            if (keys[i] != null) {
+        for (K key : keys) {
+            if (key != null) {
                 size++;
             }
         }
@@ -154,7 +159,7 @@ public class MyHashtable<K,V> implements Map<K,V> {
 
     // =======================================================================
     //  Returns a set view of the keys contained in this map. 
-    public Set keySet() {
+    public Set<K> keySet() {
         throw new UnsupportedOperationException();
     }
 
@@ -164,7 +169,7 @@ public class MyHashtable<K,V> implements Map<K,V> {
     }
 
     //  Returns a collection view of the values contained in this map. 
-    public Collection values() {
+    public Collection<V> values() {
         throw new UnsupportedOperationException();
     }
     //  Returns true if this map contains a mapping for the specified key.

@@ -41,7 +41,7 @@ public class WellformedXmlServer implements CommandExecutor {
     }
 
     @Override
-    public String execute(String command) throws Exception {
+    public String execute(String command) {
         return Boolean.toString(checkWellformed(command));
     }
 }

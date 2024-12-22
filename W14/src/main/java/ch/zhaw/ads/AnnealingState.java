@@ -1,8 +1,8 @@
 package ch.zhaw.ads;
 
 public interface AnnealingState {
-    public double getCost();
-    public AnnealingState clone();
-    public void pertub();
-    public void draw(ServerGraphics g);
+    double getCost();
+    AnnealingState clone();
+    void pertub();
+    void draw(ServerGraphics g);
 }

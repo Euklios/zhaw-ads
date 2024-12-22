@@ -30,12 +30,12 @@ public class RankingTreeServer implements CommandExecutor {
         return sb.toString();
     }
 
-    public String execute(String rankingList) throws Exception {
+    public String execute(String rankingList) {
         Tree<Competitor> competitorTree = createTree(rankingList);
         return "Rangliste (Tree)\n" + createSortedText(competitorTree);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         String rangliste =
                 "Mueller Stefan;02:31:14\n"+
                         "Marti Adrian;02:30:09\n"+

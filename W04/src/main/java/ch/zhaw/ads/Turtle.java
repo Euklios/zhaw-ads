@@ -3,7 +3,7 @@ package ch.zhaw.ads;
 
 public class Turtle {
     private static StringBuffer b;
-    private static double x, y;
+    private double x, y;
     private static double angle;
     private static Turtle theTurtle;
 
@@ -42,16 +42,16 @@ public class Turtle {
 
     public void move(double dist) {
         b.append("<line x1=\"");
-        b.append(Double.toString(round(x)));
+        b.append(round(x));
         b.append("\" y1=\"");
-        b.append(Double.toString(round(y)));
+        b.append(round(y));
         b.append("\" ");
         x += Math.cos(angle) * dist;
         y += Math.sin(angle) * dist;
         b.append("x2=\"");
-        b.append(Double.toString(round(x)));
+        b.append(round(x));
         b.append("\" y2=\"");
-        b.append(Double.toString(round(y)));
+        b.append(round(y));
         b.append("\"/>\n");
     }
 

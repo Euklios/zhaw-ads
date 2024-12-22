@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class AVLTreeTraversal<T extends Comparable<T>> implements Traversal<T> {
 
-    private TreeNode<T> root;
+    private final TreeNode<T> root;
 
     public AVLTreeTraversal(TreeNode<T> root) {
         this.root = root;
@@ -48,7 +48,7 @@ public class AVLTreeTraversal<T extends Comparable<T>> implements Traversal<T> {
     }
 
     void levelorder(TreeNode<T> node, Visitor<T> visitor) {
-        Queue<TreeNode<T>> q = new LinkedList<TreeNode<T>>();
+        Queue<TreeNode<T>> q = new LinkedList<>();
         if (node != null) {
             q.offer(node);
         }

@@ -13,7 +13,7 @@ public class ListStack implements Stack {
 
     @Override
     public Object pop() {
-        if (list.size() == 0) {
+        if (list.isEmpty()) {
             return null;
         }
 

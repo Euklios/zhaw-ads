@@ -5,7 +5,7 @@ public class SortedBinaryTree<T extends Comparable<T>> implements Tree<T> {
 
     private TreeNode<T> insertAt(TreeNode<T> node, T x) {
         if (node == null) {
-            return new TreeNode<T>(x);
+            return new TreeNode<>(x);
         } else {
             if (x.compareTo(node.getValue()) <= 0) {
                 node.left = insertAt(node.left, x);
@@ -58,7 +58,7 @@ public class SortedBinaryTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     public T remove(T x) {
-        TreeNode<T> removed = new TreeNode<T>(null);
+        TreeNode<T> removed = new TreeNode<>(null);
         root = removeAt(root, x, removed);
         return removed.getValue();
     }
@@ -84,7 +84,7 @@ public class SortedBinaryTree<T extends Comparable<T>> implements Tree<T> {
         return calcHeight(root);
     }
 
-    protected int calcSize(TreeNode p) {
+    protected int calcSize(TreeNode<T> p) {
         if (p == null) {
             return 0;
         }
@@ -106,14 +106,14 @@ public class SortedBinaryTree<T extends Comparable<T>> implements Tree<T> {
         if (root.right != null) {
             printTree(root.right,out, true, "");
         }
-        out.append(root.values+"\n");
+        out.append(root.values).append("\n");
         if (root.left != null) {
             printTree(root.left,out, false, "");
         }
         return out.toString();
     }
 
-    private void printTree(TreeNode node, StringBuilder out, boolean isRight, String indent) {
+    private void printTree(TreeNode<T> node, StringBuilder out, boolean isRight, String indent) {
         if (node.right != null) {
             printTree(node.right, out, true,
                     indent + (isRight ? "        " : " |      "));
@@ -125,7 +125,7 @@ public class SortedBinaryTree<T extends Comparable<T>> implements Tree<T> {
             out.append(" \\");
         }
         out.append("----- ");
-        out.append(node.values+"\n");
+        out.append(node.values).append("\n");
         if (node.left != null) {
             printTree(node.left, out, false,
                     indent + (isRight ? " |      " : "        "));

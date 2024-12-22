@@ -38,7 +38,7 @@ public class RankingStreamServer implements CommandExecutor {
         return "Rangliste (Stream)\n" + createSortedText(competitorStream);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         String rangliste =
                 "Mueller Stefan;02:31:14\n"+
                         "Marti Adrian;02:30:09\n"+

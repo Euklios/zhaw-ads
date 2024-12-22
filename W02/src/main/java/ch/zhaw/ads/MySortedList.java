@@ -3,22 +3,22 @@ package ch.zhaw.ads;
 import java.util.AbstractList;
 import java.util.Objects;
 
-public class MySortedList extends AbstractList {
-    protected ListNode head = new ListNode(null);
+public class MySortedList<E> extends AbstractList<E> {
+    protected ListNode<E> head = new ListNode<>(null);
 
-    protected class ListNode {
-        Object value;
-        ListNode next = this, prev = this;
+    protected static class ListNode<E> {
+        E value;
+        ListNode<E> next = this, prev = this;
 
-        ListNode(Object value) {
+        ListNode(E value) {
             this.value = value;
         }
     }
 
     @Override
-    public boolean add(Object val){
-        ListNode newNode = new ListNode(val);
-        ListNode seekHead = this.head.next;
+    public boolean add(E val){
+        ListNode<E> newNode = new ListNode<>(val);
+        ListNode<E> seekHead = this.head.next;
 
         while (seekHead != this.head){
             int compare = seekHead.value == null ? 1 : compare(seekHead.value, val);
@@ -40,7 +40,7 @@ public class MySortedList extends AbstractList {
 
     @Override
     public boolean remove(Object obj) {
-        ListNode seekHead = this.head.next;
+        ListNode<E> seekHead = this.head.next;
 
         while (seekHead != this.head) {
             if (Objects.equals(seekHead.value, obj)) {
@@ -56,8 +56,8 @@ public class MySortedList extends AbstractList {
     }
 
     @Override
-    public Object get(int pos) {
-        ListNode seekHead = this.head;
+    public E get(int pos) {
+        ListNode<E> seekHead = this.head;
 
         // Skip initial null-node
         for (int i = -1; i < pos; i++) {
@@ -78,7 +78,7 @@ public class MySortedList extends AbstractList {
 
     @Override
     public int size() {
-        ListNode seekHead = this.head;
+        ListNode<E> seekHead = this.head;
 
         int count = 0;
             while (seekHead.next != this.head) {

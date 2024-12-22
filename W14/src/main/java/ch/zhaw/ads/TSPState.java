@@ -5,7 +5,7 @@ import java.awt.*;
 public class TSPState implements AnnealingState,Cloneable {
     private static final int POINTS = 20;
 
-    private class Point  {
+    private static class Point  {
         Point(double x, double y) {
             this.x = x;
             this.y = y;
@@ -27,7 +27,7 @@ public class TSPState implements AnnealingState,Cloneable {
         points = new Point[POINTS];
         for (int i = 0; i < POINTS; i++) {
             path[i] = i;
-            points[i] = new Point(Math.random(),Math.random());
+            points[i] = new Point(Math.random(), Math.random());
         }
     }
 

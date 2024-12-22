@@ -3,22 +3,22 @@ package ch.zhaw.ads;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AdjListGraph<N extends Node,E extends Edge>
+public class AdjListGraph<N extends Node<E>, E extends Edge<N>>
         implements Graph<N, E> {
-    private final List<N> nodes = new LinkedList<N>();
-    private final Class nodeClazz;
-    private final Class edgeClazz;
+    private final List<N> nodes = new LinkedList<>();
+    private final Class<N> nodeClazz;
+    private final Class<E> edgeClazz;
 
-    public AdjListGraph(Class nodeClazz, Class edgeClazz) {
+    public AdjListGraph(Class<N> nodeClazz, Class<E> edgeClazz) {
         this.nodeClazz = nodeClazz;
         this.edgeClazz = edgeClazz;
     }
 
-    // füge Knoten hinzu, gebe alten zurück falls Knoten schon existiert
+    // füge Knoten hinzu, gebe alten zurück, falls Knoten schon existiert
     public N addNode(String name) throws Throwable {
         N node = findNode(name);
         if (node == null) {
-            node = (N) nodeClazz.newInstance();
+            node = nodeClazz.newInstance();
             node.setName(name);
             nodes.add(node);
         }
@@ -31,11 +31,11 @@ public class AdjListGraph<N extends Node,E extends Edge>
         N dst = addNode(dest);
 
         try {
-            E edge = (E) edgeClazz.newInstance();
+            E edge = edgeClazz.newInstance();
             edge.setDest(dst);
             edge.setWeight(weight);
             src.addEdge(edge);
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
     }
 
     // finde den Knoten anhand seines Namens

@@ -3,8 +3,7 @@ package ch.zhaw.ads;
 public class StorageServer implements CommandExecutor  {
 
     private static CObject new_CObject(Object s) {
-        CObject obj = (CObject)Storage._new("CObject",s);
-        return obj;
+        return (CObject)Storage._new("CObject",s);
     }
 
     static CObject a;
@@ -19,7 +18,7 @@ public class StorageServer implements CommandExecutor  {
         e = new_CObject("E");
         CObject f = new_CObject("F");
         CObject g = new_CObject("G");
-        CObject h = new_CObject("H");
+        new_CObject("H");
         Storage.addRoot(a);
         Storage.addRoot(e);
         a.next = b; b.next = c; b.down = a; c.down = d;

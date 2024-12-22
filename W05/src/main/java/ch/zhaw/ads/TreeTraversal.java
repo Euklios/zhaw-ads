@@ -2,7 +2,7 @@ package ch.zhaw.ads;
 
 public class TreeTraversal<T extends Comparable<T>> implements Traversal<T> {
 
-    private TreeNode<T> root;
+    private final TreeNode<T> root;
 
     public TreeTraversal(TreeNode<T> root) {
         this.root = root;

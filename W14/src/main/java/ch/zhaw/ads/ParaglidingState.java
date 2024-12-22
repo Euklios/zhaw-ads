@@ -9,7 +9,7 @@ public class ParaglidingState implements AnnealingState {
     private List<Circle> circles;
     private List<Point> path; // path
 
-    private class Circle {
+    private static class Circle {
         Circle(double cX, double cY, double r, double phi1, double phi2) {
             centerX = cX;
             centerY = cY;
@@ -22,7 +22,7 @@ public class ParaglidingState implements AnnealingState {
         double phi1, phi2;
     }
 
-    private class Point {
+    private static class Point {
         Point(double x, double y) {
             this.x = x;
             this.y = y;
@@ -66,7 +66,7 @@ public class ParaglidingState implements AnnealingState {
     }
 
     private List<Circle> copyCircles(List<Circle> circles) {
-        List<Circle> copy = new ArrayList<Circle>(circles.size());
+        List<Circle> copy = new ArrayList<>(circles.size());
         for (Circle c : circles) {
             copy.add(copy.size(),
                     new Circle(c.centerX, c.centerY, c.r, c.phi1, c.phi2));
@@ -85,7 +85,7 @@ public class ParaglidingState implements AnnealingState {
     }
 
     private void buildPath() {
-        path = new ArrayList<Point>();
+        path = new ArrayList<>();
         path.add(new Point(20, 100)); // start;
         for (Circle c : circles) {
             path.add(

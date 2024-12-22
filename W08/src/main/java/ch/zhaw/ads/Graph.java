@@ -1,6 +1,6 @@
 package ch.zhaw.ads;
 
-public interface Graph<N,E> {
+public interface Graph<N, E> {
 
     // füge Knoten hinzu, tue nichts, falls Knoten schon existiert
     N addNode (String name) throws Throwable;

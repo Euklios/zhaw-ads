@@ -28,7 +28,7 @@ public class AVLSearchTree<T extends Comparable<T>> extends SortedBinaryTree<T> 
     }
 
     @Override
-    protected int calcSize(TreeNode p) {
+    protected int calcSize(TreeNode<T> p) {
         if (p == null) {
             return 0;
         }
@@ -39,7 +39,7 @@ public class AVLSearchTree<T extends Comparable<T>> extends SortedBinaryTree<T> 
     /**
      * Return the height of node t, or 0, if null.
      */
-    private static int height(TreeNode t) {
+    private static int height(TreeNode<?> t) {
         return t == null ? 0 : t.height;
     }
 
@@ -154,11 +154,7 @@ public class AVLSearchTree<T extends Comparable<T>> extends SortedBinaryTree<T> 
     }
 
     public Traversal<T> traversal() {
-        return new AVLTreeTraversal<T>(root);
-    }
-
-    public T removeLast() {
-        throw new UnsupportedOperationException();
+        return new AVLTreeTraversal<>(root);
     }
 
     /**

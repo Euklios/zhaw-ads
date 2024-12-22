@@ -18,7 +18,6 @@ public class QuickerSortServer extends RecursiveAction implements CommandExecuto
     private int[] a;
     private int left;
     private int right;
-    ForkJoinPool forkJoinPool;
 
     public boolean isSorted(int[] a) {
         for (int i = 0; i < a.length - 1; i++) {
@@ -177,7 +176,7 @@ public class QuickerSortServer extends RecursiveAction implements CommandExecuto
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         QuickerSortServer sorter = new QuickerSortServer();
         String sort;
         sort = "QUICKER RANDOM 1000000 22"; System.out.print(sorter.execute(sort));
